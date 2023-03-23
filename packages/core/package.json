@@ -1,0 +1,8 @@
+{
+	"name": "@cloud-obs/core",
+	"version": "1.0.0",
+	"description": "Core functionality for Cloud-obs SDKs",
+	"main": "index.js",
+	"author": "Jinsung Park",
+	"license": "MIT"
+}

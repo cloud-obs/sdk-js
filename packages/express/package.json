@@ -1,0 +1,11 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Cloud-obs SDK for express servers",
+  "main": "index.js",
+  "author": "Jinsung Park",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.17.17"
+  }
+}

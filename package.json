@@ -1,0 +1,26 @@
+{
+	"name": "sdk-js",
+	"version": "1.0.0",
+	"description": "Official Cloud-obs SDKs for JavaScript",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cloud-obs/sdk-js.git"
+	},
+	"author": "Jinsung Park",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/cloud-obs/sdk-js/issues"
+	},
+	"homepage": "https://github.com/cloud-obs/sdk-js#readme",
+	"workspaces": [
+		"packages/*"
+	],
+	"private": true,
+	"devDependencies": {
+		"lerna": "^6.6.0"
+	}
+}

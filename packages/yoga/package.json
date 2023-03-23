@@ -1,0 +1,15 @@
+{
+	"name": "@cloud-obs/yoga",
+	"version": "1.0.0",
+	"description": "Cloud-obs SDK for yoga servers",
+	"main": "index.js",
+	"author": "Jinsung Park",
+	"license": "MIT",
+	"peerDependencies": {
+		"@envelop/core": "^3.0.6",
+		"@envelop/on-resolve": "^2.0.6"
+	},
+	"devDependencies": {
+		"@types/node": "^18.15.5"
+	}
+}
