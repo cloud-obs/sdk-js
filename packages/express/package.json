@@ -1,6 +1,6 @@
 {
   "name": "@cloud-obs/express",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cloud-obs SDK for express servers",
   "author": "Jinsung Park",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "build": "rm -rf lib && tsc --declaration -p ./tsconfig.json --outDir lib/"
   },
   "dependencies": {
-    "@cloud-obs/core": "^1.0.0"
+    "@cloud-obs/core": "^1.0.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.17"

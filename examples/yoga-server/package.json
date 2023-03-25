@@ -1,6 +1,6 @@
 {
   "name": "@cloud-obs/yoga-server",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "server.js",
   "license": "MIT",
   "private": true,
@@ -8,7 +8,7 @@
     "start": "ts-node src/server.ts"
   },
   "dependencies": {
-    "@cloud-obs/yoga": "^1.0.0",
+    "@cloud-obs/yoga": "^1.0.1",
     "@graphql-tools/schema": "^9.0.17",
     "graphql": "^16.6.0",
     "graphql-yoga": "^3.7.3"
