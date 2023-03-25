@@ -1,3 +1,5 @@
+<img src="https://github.com/cloud-obs/sdk-js/raw/main/assets/cloud-obs-logo.jpg" height="80px"/>
+
 # Cloud-Obs SDK
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ddoronin/bytable/blob/master/LICENSE)
