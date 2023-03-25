@@ -1,6 +1,6 @@
 {
   "name": "@cloud-obs/express-server",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "server.js",
   "license": "MIT",
   "private": true,
@@ -8,7 +8,7 @@
     "start": "node ./server.js --verbose"
   },
   "dependencies": {
-    "@cloud-obs/express": "^1.0.3",
+    "@cloud-obs/express": "^1.0.4",
     "express": "^4.18.2"
   }
 }
