@@ -9,3 +9,4 @@ test
 _config.yaml
 .coveralls.yaml
 .travis.yaml
+.npmrc
