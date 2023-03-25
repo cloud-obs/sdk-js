@@ -4,7 +4,8 @@
 	"description": "Official Cloud-Obs SDKs for JavaScript.",
 	"scripts": {
 		"build": "lerna run build",
-		"example:express": "lerna run --scope @cloud-obs/express-server start"
+		"example:express": "lerna run --scope @cloud-obs/express-server start",
+		"example:yoga": "lerna run --scope @cloud-obs/yoga-server start"
 	},
 	"repository": {
 		"type": "git",

@@ -2,14 +2,23 @@
 	"name": "@cloud-obs/yoga",
 	"version": "1.0.0",
 	"description": "Cloud-obs SDK for yoga servers",
-	"main": "index.js",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
 	"author": "Jinsung Park",
 	"license": "MIT",
+	"engines": {
+		"node": ">=14"
+	},
+	"scripts": {
+		"build": "rm -rf lib && tsc --declaration -p ./tsconfig.json --outDir lib/"
+	},
 	"peerDependencies": {
 		"@envelop/core": "^3.0.6",
 		"@envelop/on-resolve": "^2.0.6"
 	},
 	"devDependencies": {
-		"@types/node": "^18.15.5"
+		"@types/node": "^18.15.5",
+		"@envelop/core": "^3.0.6",
+		"@envelop/on-resolve": "^2.0.6"
 	}
 }

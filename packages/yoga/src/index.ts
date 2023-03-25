@@ -1,8 +1,23 @@
-import { Communicator, GraphQLRequest, Req } from '@cloud-obs/core';
+import { Communicator, GraphQLRequest } from '@cloud-obs/core';
 import { Plugin, handleStreamOrSingleExecutionResult } from '@envelop/core';
 import { useOnResolve } from '@envelop/on-resolve';
+import { randomUUID } from 'crypto';
+
+interface CloudObsContext {
+    requestId: string | null;
+    url: string;
+    method: string;
+    headers: string[];
+    startTime?: string
+    endTime?: string | null
+    duration?: number | null
+    resolvers: any[]
+    hrtime: [number, number]
+}
 
 const cloudObsSymbol = Symbol('cloud-obs');
+
+const BATCH_TIMEFRAME = 1000;
 
 const HR_TO_NS = 1e9;
 const NS_TO_MS = 1e6;
@@ -21,13 +36,12 @@ const diffHrTimeToMs = (hrtimeStart: [number, number], hrtimeEnd: [number, numbe
     return (durationHrTimeToNanos(hrtimeEnd) - durationHrTimeToNanos(hrtimeStart)) / NS_TO_MS
 }
 
-
 /**
  * Function used in Apollo GraphQL server for communications with CloudObs
  * @returns 
  */
-export const useCloudObsEnvelop = (config): Plugin => {
-  const communicator = new Communicator(config);
+export const useCloudObsEnvelop = (apiKey: string): Plugin => {
+  const communicator = new Communicator({apiKey, timeout: BATCH_TIMEFRAME});
     return {
         onPluginInit({addPlugin}) {
             const onResolve = useOnResolve(({info, context}) => {
@@ -72,7 +86,7 @@ export const useCloudObsEnvelop = (config): Plugin => {
 
             return {
                 onExecuteDone(payload) {
-                    const requestId: string = (payload.args.contextValue as any)?.req?.headers['x-request-id']?? crypto.randomUUID();
+                    const requestId: string = (payload.args.contextValue as any)?.req?.headers['x-request-id']?? randomUUID();
                     const requestObj: GraphQLRequest = {
                         id: requestId,
                         url: ctx.url,
