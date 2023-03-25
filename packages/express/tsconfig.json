@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "target": "esnext",
+    "module": "commonjs"
+  },
+  "include": ["./src/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.spec.tsx"]
+}

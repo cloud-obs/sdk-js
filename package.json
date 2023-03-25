@@ -1,26 +1,28 @@
 {
 	"name": "sdk-js",
 	"version": "1.0.0",
-	"description": "Official Cloud-obs SDKs for JavaScript",
-	"main": "index.js",
+	"description": "Official Cloud-Obs SDKs for JavaScript.",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "lerna run build",
+		"example:express": "lerna run --scope @cloud-obs/express-server start"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/cloud-obs/sdk-js.git"
 	},
 	"author": "Jinsung Park",
-	"license": "ISC",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/cloud-obs/sdk-js/issues"
 	},
 	"homepage": "https://github.com/cloud-obs/sdk-js#readme",
 	"workspaces": [
-		"packages/*"
+		"packages/*",
+		"examples/*"
 	],
 	"private": true,
 	"devDependencies": {
-		"lerna": "^6.6.0"
+		"lerna": "^6.6.0",
+		"@tsconfig/node14": "^1.0.3"
 	}
 }
