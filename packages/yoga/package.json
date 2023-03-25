@@ -1,6 +1,6 @@
 {
 	"name": "@cloud-obs/yoga",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Cloud-obs SDK for yoga servers",
 	"main": "./lib/index.js",
 	"types": "./lib/index.d.ts",
@@ -20,5 +20,8 @@
 		"@envelop/core": "^3.0.6",
 		"@envelop/on-resolve": "^2.0.6",
 		"@types/node": "^18.15.5"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
