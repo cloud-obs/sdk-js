@@ -1,5 +1,5 @@
 import { Communicator } from "@cloud-obs/core";
-import { v4 as uuidv4 } from "uuid";
+import { randomUUID } from "crypto";
 import { NextFunction, Request, Response } from "express";
 
 const cloudObsRequestId = Symbol("cloud-obs-req-id");
@@ -21,7 +21,7 @@ export function cloudObs(apiKey: string) {
   const communicator = new Communicator({apiKey, timeout: BATCH_TIMEFRAME});
     return (req: Request, res: Response, next: NextFunction) => {
       // TODO: Check the structure of header
-      const requestId = req.headers['x-request-id'] as string??uuidv4();
+      const requestId = req.headers['x-request-id'] as string??randomUUID();
       (req as CloudObsRequest)[cloudObsRequestId] = {
         requestId
       };
