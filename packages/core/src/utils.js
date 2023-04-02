@@ -1,11 +1,9 @@
 const http = require('http');
 
-const SDK_API_SERVER = process.env.SDK_API_SERVER?? 'http://sdk-api.cloud-obs.com';
-
-function submit(batch, apiKey) {
+function submit(url, batch, apiKey) {
   const postData = JSON.stringify({data: batch});
 
-  const req = http.request(SDK_API_SERVER + '/batch', {
+  const req = http.request(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

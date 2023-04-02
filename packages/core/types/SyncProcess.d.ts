@@ -4,7 +4,7 @@ export interface Config {
     apiKey: string;
     timeout: number;
 }
-export declare class Communicator {
+export declare class SyncProcess {
     constructor(config: Config);
     addReq(req: Req): void;
 }

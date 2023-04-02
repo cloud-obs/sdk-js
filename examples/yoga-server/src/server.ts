@@ -1,13 +1,17 @@
 import { createServer } from 'node:http'
 import { createYoga } from 'graphql-yoga'
 import { schema } from './schema'
-import { useCloudObsEnvelop } from '@cloud-obs/yoga'
+import { useCloudObs } from '@cloud-obs/yoga'
+import p from '../package.json';
  
 // Create a Yoga instance with a GraphQL schema.
 const yoga = createYoga({ 
   schema, 
   plugins: [
-    useCloudObsEnvelop('53e90734-4712-4c62-8e98-b321fad0173d')
+    useCloudObs({
+      apiKey: '53e90734-4712-4c62-8e98-b321fad0173d',
+      version: p.version
+    })
   ]
 })
  

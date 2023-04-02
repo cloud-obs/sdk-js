@@ -8,7 +8,7 @@
     "start": "node ./server.js --verbose"
   },
   "dependencies": {
-    "@cloud-obs/express": "^1.0.4",
+    "@cloud-obs/express": "*",
     "express": "^4.18.2"
   }
 }

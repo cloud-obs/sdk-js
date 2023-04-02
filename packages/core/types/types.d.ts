@@ -6,6 +6,7 @@ export type Req = {
   startTime: string;
   endTime?: string;
   duration: number;
+  version?: string;
 }
 
 export type GraphQLRequest = Req & {

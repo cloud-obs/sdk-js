@@ -1,6 +1,6 @@
-import { Communicator } from "./Communicator";
+import { SyncProcess } from "./SyncProcess";
 export * from "./types";
 
 export {
-    Communicator
+    SyncProcess
 }

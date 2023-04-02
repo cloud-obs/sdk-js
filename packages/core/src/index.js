@@ -1,5 +1,5 @@
-const { Communicator } = require("./Communicator");
+const { SyncProcess } = require("./SyncProcess");
 
 module.exports = {
-    Communicator
+    SyncProcess
 }

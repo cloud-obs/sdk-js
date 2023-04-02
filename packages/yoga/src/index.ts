@@ -1,4 +1,4 @@
-import { Communicator, GraphQLRequest } from '@cloud-obs/core';
+import { SyncProcess, GraphQLRequest } from '@cloud-obs/core';
 import { Plugin, handleStreamOrSingleExecutionResult } from '@envelop/core';
 import { useOnResolve } from '@envelop/on-resolve';
 import { randomUUID } from 'crypto';
@@ -36,12 +36,19 @@ const diffHrTimeToMs = (hrtimeStart: [number, number], hrtimeEnd: [number, numbe
     return (durationHrTimeToNanos(hrtimeEnd) - durationHrTimeToNanos(hrtimeStart)) / NS_TO_MS
 }
 
+export type CloudObsEnvelopConfig = {
+    apiKey?: string
+    version?: string
+}
+
 /**
- * Function used in Apollo GraphQL server for communications with CloudObs
- * @returns 
+ * Function used in Apollo GraphQL server for syncing with CloudObs.
  */
-export const useCloudObsEnvelop = (apiKey: string): Plugin => {
-  const communicator = new Communicator({apiKey, timeout: BATCH_TIMEFRAME});
+export const useCloudObs = ({apiKey, version}: CloudObsEnvelopConfig): Plugin => {
+  const syncProcess = new SyncProcess({
+    apiKey: apiKey??process.env.CLOUD_OBS_API_KEY?? '',
+    timeout: BATCH_TIMEFRAME
+});
     return {
         onPluginInit({addPlugin}) {
             const onResolve = useOnResolve(({info, context}) => {
@@ -103,12 +110,9 @@ export const useCloudObsEnvelop = (apiKey: string): Plugin => {
                             startOffset: resolver.startOffset,
                             duration: resolver.duration,
                         })),
+                        version,
                     }
-                    communicator.addReq(requestObj);
-                    return handleStreamOrSingleExecutionResult(payload, ({ result }) => {
-                        result.extensions = result.extensions || {};
-                        result.extensions.requestObj= requestObj;
-                    });
+                    syncProcess.addReq(requestObj);
                 }
             }
         }

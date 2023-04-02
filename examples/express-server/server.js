@@ -1,10 +1,14 @@
 const express = require('express')
 const {cloudObs} = require('@cloud-obs/express');
+const p = require('./package.json');
 
 const app = express()
 const port = 3030
 
-app.use(cloudObs('246655b2-0a88-488d-80dd-ee479721c62f'));
+app.use(cloudObs({
+    apiKey:'246655b2-0a88-488d-80dd-ee479721c62f',
+    version: p.version
+}));
 
 app.get('/', (req, res) => {
   res.send('Hello World!')

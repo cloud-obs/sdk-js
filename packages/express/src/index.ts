@@ -1,4 +1,4 @@
-import { Communicator } from "@cloud-obs/core";
+import { SyncProcess } from "@cloud-obs/core";
 import { randomUUID } from "crypto";
 import { NextFunction, Request, Response } from "express";
 
@@ -12,13 +12,21 @@ type CloudObsRequest = Request & {
 
 const BATCH_TIMEFRAME = 1000;
 
+export type CloudObsOptions = {
+  apiKey?: string;
+  version?: string;
+}
+
 /**
  * Function used in express server for communications with CloudObs
  * @param config 
  * @returns 
  */
-export function cloudObs(apiKey: string) {
-  const communicator = new Communicator({apiKey, timeout: BATCH_TIMEFRAME});
+export function cloudObs({ apiKey, version }: CloudObsOptions) {
+  const syncProcess = new SyncProcess({
+    apiKey: apiKey??process.env.CLOUD_OBS_API_KEY?? '',
+    timeout: BATCH_TIMEFRAME
+  });
     return (req: Request, res: Response, next: NextFunction) => {
       // TODO: Check the structure of header
       const requestId = req.headers['x-request-id'] as string??randomUUID();
@@ -30,13 +38,14 @@ export function cloudObs(apiKey: string) {
       const start = performance.now();
       res.send = (data: any) => {
       const duration = performance.now() - start;
-      communicator.addReq({
+      syncProcess.addReq({
         id: requestId,
         url: req.originalUrl,
         method: req.method,
         startTime,
         endTime: new Date().toISOString(),
-        duration
+        duration,
+        version
       });
       return send.bind(res)(data);
     };
