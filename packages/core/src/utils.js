@@ -1,9 +1,9 @@
-const http = require('http');
+const https = require('https');
 
 function submit(url, batch, apiKey) {
   const postData = JSON.stringify({data: batch});
 
-  const req = http.request(url, {
+  const req = https.request(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

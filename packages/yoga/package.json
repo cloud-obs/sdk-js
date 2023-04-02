@@ -14,7 +14,8 @@
 	},
 	"peerDependencies": {
 		"@envelop/core": "^3.0.6",
-		"@envelop/on-resolve": "^2.0.6"
+		"@envelop/on-resolve": "^2.0.6",
+		"graphql": "^14.0.0"
 	},
 	"devDependencies": {
 		"@envelop/core": "^3.0.6",
